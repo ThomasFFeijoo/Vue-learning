@@ -5,9 +5,9 @@ const app = Vue.createApp({
             url: 'http://example.com',
             showBooks: true,
             books: [
-                { title: 'name of the wind', author: 'patrick rothfuss', img: 'assets/1.jpg' },
-                { title: 'lord of the rings', author: 'tolkien', img: 'assets/2.jpg' },
-                { title: 'witcher', author: 'andrzej sapkowski', img: 'assets/3.jpg' }
+                { title: 'name of the wind', author: 'patrick rothfuss', img: 'assets/1.jpg', isFav: true },
+                { title: 'lord of the rings', author: 'tolkien', img: 'assets/2.jpg', isFav: false },
+                { title: 'witcher', author: 'andrzej sapkowski', img: 'assets/3.jpg', isFav: true }
             ]
         }
     },
