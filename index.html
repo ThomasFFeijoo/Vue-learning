@@ -19,9 +19,14 @@
 <body>
     <h1>Hello World</h1>
     <div id="app">
+        <!-- attribute binding-->
+        <!-- <a v-bind:href="url">example website</a> --> 
+        <a :href="url">also works for v-bind</a>
+
         <div v-if="showBooks">
             <ul>
                 <li v-for="book in books">
+                    <img :src="book.img" :alt="book.title">
                     <h3>{{ book.title }}</h3>
                     <p>{{ book.author }}</p>
                 </li>
