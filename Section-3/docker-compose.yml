@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  nodejs:
+    container_name: nodejs
+    build:
+      context: .
+      dockerfile: npm.Dockerfile
+    volumes:
+      - ./modal-project:/src
