@@ -11,3 +11,5 @@ services:
     command: /bin/sh -c "yarn run serve"
     volumes:
       - ./modal-project:/src
+    environment: 
+      - CHOKIDAR_USEPOLLING=true
