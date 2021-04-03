@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  nodejs:
+    container_name: nodejs
+    build:
+      context: .
+      dockerfile: npm.Dockerfile
+    ports:
+      - 80:8080
+    command: /bin/sh -c "yarn run serve"
+    volumes:
+      - ./web-form:/src
