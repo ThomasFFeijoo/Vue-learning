@@ -11,7 +11,14 @@
       <p>Hello</p>
     </Modal>
   </div>
+  <div v-if="showModalTwo">
+    <Modal @close="toggleModalTwo">
+      <h1>Second</h1>
+      <p>Hello Second</p>
+    </Modal>
+  </div>
   <button @click.alt="toggleModal">open modal (alt)</button>
+  <button @click.ctrl="toggleModalTwo">open modal two(ctrl)</button>
 </template>
 
 <script>
@@ -27,12 +34,16 @@ export default {
       title: 'My First Vue maoe App',
       header: 'Sign up for the giveaway',
       text: 'Win rewards',
-      showModal: false
+      showModal: false,
+      showModalTwo: false
     }
   },
   methods: {
     toggleModal() {
       this.showModal = !this.showModal
+    },
+    toggleModalTwo() {
+      this.showModalTwo = !this.showModalTwo
     }
   }
 }
