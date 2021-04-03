@@ -7,9 +7,7 @@ services:
       context: .
       dockerfile: npm.Dockerfile
     ports:
-      - 8080:8080
+      - 80:8080
     command: /bin/sh -c "yarn run serve"
     volumes:
       - ./modal-project:/src
-    environment: 
-      - CHOKIDAR_USEPOLLING=true

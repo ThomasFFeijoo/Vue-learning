@@ -1,7 +1,7 @@
 <template>
     <div class="backdrop">
         <div class="modal">
-            <p>modal content</p>
+            <p>modal content thomasssss</p>
         </div>
     </div>
 </template>
