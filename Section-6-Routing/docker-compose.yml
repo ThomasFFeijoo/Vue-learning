@@ -11,3 +11,14 @@ services:
     command: /bin/sh -c "yarn run serve"
     volumes:
       - ./ninja-jobs:/src
+  
+  jsonserver:
+    container_name: jsonserver
+    build:
+      context: .
+      dockerfile: jsonserver.Dockerfile
+    ports:
+      - 3000:3000
+    command: /bin/sh -c "json-server --host 0.0.0.0 --watch data/db.json"
+    volumes:
+      - ./ninja-jobs:/src
