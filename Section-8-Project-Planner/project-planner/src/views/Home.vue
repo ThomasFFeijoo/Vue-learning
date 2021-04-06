@@ -2,7 +2,7 @@
   <div class="home">
     <div v-if="projects.length">
       <div v-for="project in projects" :key="project.id">
-        <p>{{ project.title }}</p>
+        <SingleProject :project="project" />
       </div>
     </div>
     <div v-else>Loading...</div>
@@ -10,9 +10,11 @@
 </template>
 
 <script>
+import SingleProject from '../components/SingleProject.vue'
+
 export default {
   name: 'Home',
-  components: {},
+  components: { SingleProject },
   data() {
     return {
       projects: []
