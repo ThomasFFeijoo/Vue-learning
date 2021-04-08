@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  nodejs:
+    container_name: nodejs
+    build:
+      context: .
+      dockerfile: npm.Dockerfile
+    ports:
+      - 80:8080
+    command: /bin/sh -c "yarn run serve"
+    volumes:
+      - ./dojo-blog:/src
+  
+  jsonserver:
+    container_name: jsonserver
+    build:
+      context: .
+      dockerfile: jsonserver.Dockerfile
+    ports:
+      - 3000:3000
+    command: /bin/sh -c "json-server --host 0.0.0.0 --watch data/db.json"
+    volumes:
+      - ./dojo-blog:/src
