@@ -2,6 +2,6 @@ FROM node:alpine
 
 WORKDIR /src
 
-COPY ./project-planner .
+COPY ./dojo-blog .
 
 RUN npm install -g json-server
