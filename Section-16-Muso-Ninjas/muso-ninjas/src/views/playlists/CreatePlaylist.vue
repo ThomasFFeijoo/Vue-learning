@@ -15,36 +15,41 @@
 
 <script>
 import { ref } from 'vue'
+import useStorage from '@/composables/useStorage'
+
 export default {
     setup() {
-        const title = ref('')
-        const description = ref('')
-        const file = ref(null)
-        const fileError = ref(null)
+      const { filePath, url, uploadImage } = useStorage()
 
-        const handleSubmit = () => {
-            if(file.value) {
-                console.log(title.value, description.value, file.value)
-            }
-        }
+      const title = ref('')
+      const description = ref('')
+      const file = ref(null)
+      const fileError = ref(null)
 
-        // allowed file types
-        const types = ['image/png', 'image/jpeg']
+      const handleSubmit = async () => {
+          if(file.value) {
+              await uploadImage(file.value)
+              console.log('image uploaded, url ', url.value)
+          }
+      }
 
-        const handleChange = (e) => {
-            const selected = e.target.files[0]
-            console.log(selected)
+      // allowed file types
+      const types = ['image/png', 'image/jpeg']
 
-            if(selected && types.includes(selected.type)) {
-                file.value = selected
-                fileError.value = null
-            } else {
-                file.value = null
-                fileError.value = 'Please select an image file (png or jpeg)'
-            }
-        }
+      const handleChange = (e) => {
+          const selected = e.target.files[0]
+          console.log(selected)
 
-        return { title, description, handleSubmit, handleChange, fileError }
+          if(selected && types.includes(selected.type)) {
+              file.value = selected
+              fileError.value = null
+          } else {
+              file.value = null
+              fileError.value = 'Please select an image file (png or jpeg)'
+          }
+      }
+
+      return { title, description, handleSubmit, handleChange, fileError }
     }
 }
 </script>
