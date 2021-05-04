@@ -12,12 +12,15 @@
 
 <script>
 import { ref } from 'vue'
+import useDocument from '@/composables/useDocument'
 
 export default {
-    setup() {
+    props: ['playlist'],
+    setup(props) {
         const title = ref('')
         const artist = ref('')
         const showForm = ref(false)
+        const { updateDoc } = useDocument('playlists', props.playlist.id)
 
         const handleSubmit = async () => {
             const newSong = {
@@ -25,6 +28,13 @@ export default {
                 artist: artist.value,
                 id: Math.floor(Math.random() * 1000000)
             }
+
+            await updateDoc({
+                songs: [...props.playlist.songs, newSong]
+            })
+
+            title.value = ''
+            artist.value = ''
         }
 
         console.log("new song");
